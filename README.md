@@ -10,6 +10,9 @@
 - 支持npm、pnpm和yarn包管理器
 - 使用TypeScript编写，提高可维护性
 
+## 项目地址
+[pt-nestjs-cli](https://github.com/bearangel/pt-nestjs-cli)
+
 ## 安装
 
 ### 全局安装

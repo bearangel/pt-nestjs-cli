@@ -1,0 +1,30 @@
+# 忽略JetBrains IDE的配置文件
+.idea/
+
+# 忽略构建输出目录
+dist/
+build/
+
+# 忽略node模块依赖
+node_modules/
+
+# 忽略pnpm锁文件
+pnpm-lock.yaml
+
+# 忽略npm锁文件（如果您的项目使用npm）
+package-lock.json
+
+# 忽略yarn锁文件（如果您的项目使用yarn）
+yarn.lock
+
+# 忽略测试文件或目录（如果不想发布）
+tests/
+*.test.js
+
+# 忽略调试文件
+*.log
+.DS_Store # macOS文件
+
+# 忽略私密配置文件
+.env
+config.local.js
