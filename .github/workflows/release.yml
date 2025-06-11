@@ -1,0 +1,30 @@
+name: Publish to npmjs
+
+on:
+  release:
+    types: [published] # 当有新的 release 发布时触发
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest # 在 Ubuntu 系统上运行
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4 # 检出你的仓库代码
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # 或者你项目所需的 Node.js 版本，例如 '20'
+          registry-url: 'https://registry.npmjs.org/' # 指向 npmjs 注册表
+
+      - name: Install dependencies
+        run: npm ci # 使用 npm ci (clean install) 来安装依赖，推荐用于 CI/CD
+
+      - name: Build package # 如果你的项目需要构建
+        run: npm run build # 假设你的 package.json 中有 "build" 脚本
+
+      - name: Publish package to npmjs
+        run: npm publish --access public # 发布包。如果你的包是私有的，可以移除 --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # 使用 GitHub secrets 存储你的 npm token
